@@ -1,7 +1,9 @@
 import App from "./App";
 import ErrorView from "./views/ErrorView";
-import ProfileView from "./views/ProfileView";
-import SignupView from "./views/SignupView";
+import LoginView from "./views/users/LoginView";
+import ProfileView from "./views/users/ProfileView";
+import ProtectedRoute from "./views/users/ProtectedRoute";
+import SignupView from "./views/users/SignupView";
 
 export const routes = [
   {
@@ -9,8 +11,13 @@ export const routes = [
     element: <App />,
     errorElement: <ErrorView />,
     children: [
-      { path: "profile", element: <ProfileView /> },
+      {
+        path: "",
+        element: <ProtectedRoute />,
+        children: [{ path: "profile", element: <ProfileView /> }],
+      },
       { path: "signup", element: <SignupView /> },
+      { path: "login", element: <LoginView /> },
     ],
   },
 ];

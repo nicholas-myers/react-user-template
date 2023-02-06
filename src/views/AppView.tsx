@@ -6,7 +6,7 @@ const AppView = () => {
   return (
     <div>
       <Header />
-      <main>
+      <main className="d-flex justify-content-center">
         <Outlet />
       </main>
       <footer></footer>
