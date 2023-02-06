@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Button, Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state: any) => state.user.isLoggedIn);
   return (
     <header className="d-flex justify-content-between p-3">
       <h1>Site Name</h1>
