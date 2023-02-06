@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../../state/userActions";
 import { Button, Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const isLoggedIn = useSelector((state: any) => state.user.isLoggedIn);
+  const dispatch = useDispatch();
+
   return (
     <header className="d-flex justify-content-between p-3">
       <h1>Site Name</h1>
@@ -18,7 +20,7 @@ const Header = () => {
             </NavItem>
             <NavItem>
               <Link to="login">
-                <Button>Login</Button>
+                <Button onClick={() => login(dispatch)}>Login</Button>
               </Link>
             </NavItem>
           </>
@@ -27,7 +29,7 @@ const Header = () => {
           <>
             <NavItem>
               <Link to="/">
-                <Button>Logout</Button>
+                <Button onClick={() => logout(dispatch)}>Logout</Button>
               </Link>
             </NavItem>
             <NavItem>
